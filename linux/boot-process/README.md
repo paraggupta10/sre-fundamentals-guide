@@ -8,16 +8,30 @@ The Linux boot process consists of 6 main stages that occur sequentially when a 
 
 ## The 6 Stages
 
-### 1. BIOS (Basic Input/Output System)
+### 1. Firmware (BIOS/UEFI)
+
+#### Legacy BIOS Boot
 - **Purpose**: System initialization and hardware checks
 - **Process**:
   - Performs Power-On Self-Test (POST)
   - Checks system integrity
   - Searches for boot loader in configured order (floppy, CD-ROM, hard drive)
   - Loads and executes the Master Boot Record (MBR)
-- **Key Points**:
-  - Can change boot sequence using F12 or F2 during startup
-  - Hands control to the boot loader once found
+- **Limitations**: 16-bit mode, 1MB memory limit, MBR partition table only
+
+#### Modern UEFI Boot (Recommended)
+- **Purpose**: Advanced firmware interface replacing BIOS
+- **Process**:
+  - Performs POST and hardware initialization
+  - Reads GPT partition table and UEFI boot variables
+  - Loads EFI boot manager from ESP (EFI System Partition)
+  - Executes EFI boot loader (e.g., GRUB2 EFI, systemd-boot)
+- **Advantages**:
+  - 32/64-bit mode, faster boot times
+  - Secure Boot capability with cryptographic verification
+  - Support for disks >2TB with GPT
+  - Network boot capabilities
+  - Graphical interface and mouse support
 
 ### 2. MBR (Master Boot Record)
 - **Location**: First sector of the bootable disk (typically /dev/sda or /dev/hda)
@@ -28,23 +42,42 @@ The Linux boot process consists of 6 main stages that occur sequentially when a 
   - MBR validation check (2 bytes)
 - **Function**: Contains information about GRUB (or LILO) and executes it
 
-### 3. GRUB (Grand Unified Bootloader)
+### 3. Boot Loader (GRUB2)
+
+#### GRUB2 (Current Standard)
 - **Features**:
-  - Allows selection between multiple kernel images
-  - Displays splash screen with timeout
-  - Understands filesystems (unlike older LILO)
-- **Configuration**: `/boot/grub/grub.conf` (linked from `/etc/grub.conf`)
-- **Sample Configuration**:
+  - Supports both BIOS and UEFI systems
+  - Multiple kernel and OS support
+  - Scripting capabilities and modules
+  - Rescue mode and command-line interface
+  - Cryptographic signature verification
+
+#### Configuration Files:
+- **Main Config**: `/boot/grub/grub.cfg` (auto-generated, don't edit directly)
+- **User Config**: `/etc/default/grub` (edit this file)
+- **Custom Scripts**: `/etc/grub.d/` directory
+
+#### Sample Modern Configuration (`/etc/default/grub`):
 ```bash
-#boot=/dev/sda
-default=0
-timeout=5
-splashimage=(hd0,0)/boot/grub/splash.xpm.gz
-hiddenmenu
-title CentOS (2.6.18-194.el5PAE)
-    root (hd0,0)
-    kernel /boot/vmlinuz-2.6.18-194.el5PAE ro root=LABEL=/
-    initrd /boot/initrd-2.6.18-194.el5PAE.img
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="Ubuntu"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+GRUB_CMDLINE_LINUX=""
+GRUB_TERMINAL=console
+GRUB_GFXMODE=640x480
+```
+
+#### Update GRUB after changes:
+```bash
+# Ubuntu/Debian
+sudo update-grub
+
+# RHEL/CentOS/Fedora
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+# UEFI systems
+sudo grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 ```
 
 ### 4. Kernel
@@ -57,7 +90,9 @@ title CentOS (2.6.18-194.el5PAE)
   - Contains necessary drivers for hardware access
   - Enables access to hard drive partitions
 
-### 5. Init
+### 5. Init System
+
+#### Traditional SysV Init (Legacy)
 - **Configuration**: Reads `/etc/inittab` to determine run level
 - **Run Levels**:
   - 0: Halt
@@ -68,6 +103,20 @@ title CentOS (2.6.18-194.el5PAE)
   - 5: X11 (GUI)
   - 6: Reboot
 - **Function**: Identifies default init level and loads appropriate programs
+
+#### Modern systemd Init (Current Standard)
+- **Configuration**: Uses unit files and targets instead of runlevels
+- **Boot Targets** (equivalent to runlevels):
+  - `poweroff.target` (runlevel 0)
+  - `rescue.target` (runlevel 1)
+  - `multi-user.target` (runlevel 3)
+  - `graphical.target` (runlevel 5)
+  - `reboot.target` (runlevel 6)
+- **Process**:
+  1. systemd starts as PID 1
+  2. Reads `/etc/systemd/system/default.target`
+  3. Activates dependencies and services in parallel
+  4. Manages service lifecycle and dependencies
 
 ### 6. Runlevel Programs
 - **Location**: `/etc/rc.d/rc*.d/` directories
@@ -125,17 +174,47 @@ Each stage hands control to the next, creating a chain of initialization that br
 **Answer:**
 If GRUB is corrupted, the system cannot load the kernel. Recovery steps:
 
+**Method 1: Complete Recovery (Recommended)**
 1. **Boot from rescue media** (Live CD/USB)
-2. **Mount the root filesystem**: `mount /dev/sda1 /mnt`
-3. **Chroot into the system**: `chroot /mnt`
-4. **Reinstall GRUB**: 
+2. **Identify and mount filesystems**:
    ```bash
-   grub-install /dev/sda
-   grub-mkconfig -o /boot/grub/grub.cfg
+   lsblk -f                    # Identify partitions
+   mount /dev/sda2 /mnt        # Mount root (adjust partition)
+   mount /dev/sda1 /mnt/boot   # Mount boot if separate partition
    ```
-5. **Exit and reboot**
+3. **Prepare chroot environment**:
+   ```bash
+   mount --bind /dev /mnt/dev
+   mount --bind /proc /mnt/proc
+   mount --bind /sys /mnt/sys
+   mount --bind /run /mnt/run   # Important for systemd systems
+   ```
+4. **Chroot and reinstall GRUB**:
+   ```bash
+   chroot /mnt
+   # For BIOS systems
+   grub-install /dev/sda
+   # For UEFI systems  
+   grub-install --target=x86_64-efi --efi-directory=/boot/efi
+   # Update configuration
+   update-grub  # or grub2-mkconfig -o /boot/grub2/grub.cfg
+   ```
+5. **Clean exit**:
+   ```bash
+   exit
+   umount /mnt/{run,sys,proc,dev,boot}
+   umount /mnt
+   reboot
+   ```
 
-Alternative: Use GRUB rescue mode to manually boot and then reinstall GRUB.
+**Method 2: GRUB Rescue Shell**
+```bash
+grub rescue> ls                           # List available partitions
+grub rescue> set root=(hd0,msdos1)       # Set root partition
+grub rescue> linux /boot/vmlinuz root=/dev/sda1
+grub rescue> initrd /boot/initrd.img
+grub rescue> boot
+```
 
 #### 3. **How do you troubleshoot a system that won't boot?**
 **Answer:**
