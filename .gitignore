@@ -1,0 +1,72 @@
+# Context awareness (never commit)
+.context.json
+.context.yaml
+.local_notes/
+.agent_memory/
+
+# Environment and secrets
+.env
+.env.local
+.env.production
+*.key
+*.pem
+*.p12
+*.pfx
+secrets.txt
+config.local.*
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Project-specific ignores
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate*
+.vagrant/
+.docker/
+*.pid
+
+# Build artifacts
+dist/
+build/
+target/
+*.jar
+*.war
+*.ear
+*.class
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor backups
+*~
+*.bak
+*.backup
+*.orig
+
+# Local development
+.local/
+.cache/
+.tmp/
