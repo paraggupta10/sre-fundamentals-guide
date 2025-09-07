@@ -3,106 +3,159 @@
 ## 🤔 Current Research Questions
 
 ### High Priority
-1. **{QUESTION_TITLE}**
-   - **Question:** {DETAILED_QUESTION}
-   - **Context:** {WHY_THIS_IS_IMPORTANT}
-   - **Research Status:** {Not Started/In Progress/Researching}
-   - **Target Resolution:** {YYYY-MM-DD}
+1. **How to define meaningful SLOs for different types of services?**
+   - **Question:** What are the best practices for setting SLO targets for web services vs. batch jobs vs. data pipelines?
+   - **Context:** Understanding how to apply SLO concepts to different service types is crucial for practical implementation
+   - **Research Status:** Not Started
+   - **Target Resolution:** 2025-01-14
    - **Resources Found:** 
-     - [{Resource}]({URL})
-   - **Notes:** {CURRENT_FINDINGS_OR_THOUGHTS}
+     - [Google SRE Workbook - Implementing SLOs](https://sre.google/workbook/implementing-slos/)
+   - **Notes:** Need to find real-world examples and case studies
+
+2. **What monitoring tools should I learn first for hands-on practice?**
+   - **Question:** Should I start with Prometheus + Grafana, or explore cloud-native solutions like AWS CloudWatch?
+   - **Context:** Want to get hands-on experience but need to prioritize learning efforts
+   - **Research Status:** In Progress
+   - **Target Resolution:** 2025-01-10
+   - **Resources Found:**
+     - [Prometheus Getting Started](https://prometheus.io/docs/prometheus/latest/getting_started/)
+     - [Grafana Tutorials](https://grafana.com/tutorials/)
 
 ### Medium Priority
-2. **{QUESTION_TITLE}**
-   - **Question:** {DETAILED_QUESTION}
-   - **Context:** {WHY_THIS_IS_IMPORTANT}
-   - **Research Status:** {STATUS}
+3. **How do SRE teams structure their on-call rotations?**
+   - **Question:** What are the best practices for on-call scheduling, escalation procedures, and burnout prevention?
+   - **Context:** Understanding operational aspects of SRE work
+   - **Research Status:** Not Started
+
+4. **What's the difference between SRE and DevOps in practice?**
+   - **Question:** How do these roles and responsibilities differ in real organizations?
+   - **Context:** Career planning and understanding role expectations
+   - **Research Status:** Not Started
 
 ### Low Priority
-3. **{QUESTION_TITLE}**
-   - **Question:** {DETAILED_QUESTION}
-   - **Context:** {WHY_THIS_IS_IMPORTANT}
+5. **How do you measure and improve MTTR (Mean Time To Recovery)?**
+   - **Question:** What metrics and practices help reduce incident resolution time?
+   - **Context:** Understanding incident response effectiveness
+   - **Research Status:** Not Started
 
 ## ✅ Resolved Questions
 
-### {RESOLVED_QUESTION_TITLE}
-**Resolved Date:** {YYYY-MM-DD}  
-**Original Question:** {THE_QUESTION}
+### What are the core principles of Site Reliability Engineering?
+**Resolved Date:** 2025-01-07  
+**Original Question:** What makes SRE different from traditional operations?
 
 **Answer/Solution:**
-{THE_ANSWER_OR_SOLUTION_FOUND}
+SRE applies software engineering principles to operations problems. Core principles include:
+- Embracing risk through error budgets
+- Eliminating toil through automation
+- Monitoring everything with meaningful metrics
+- Simplicity in system design and operations
+- Blameless postmortem culture
 
 **Sources:**
-- [{Source 1}]({URL})
-- [{Source 2}]({URL})
+- [Google SRE Book - Introduction](https://sre.google/sre-book/introduction/)
+- [Google SRE Book - Embracing Risk](https://sre.google/sre-book/embracing-risk/)
 
 **Key Insights:**
-- {INSIGHT_1}
-- {INSIGHT_2}
+- SRE is fundamentally about treating operations as a software problem
+- Error budgets provide a quantitative framework for balancing reliability and velocity
+- Automation is preferred over manual processes wherever possible
 
 ---
 
 ## 🔍 Research Areas
 
-### {RESEARCH_AREA_1}
-**Priority:** {High/Medium/Low}  
-**Scope:** {WHAT_ASPECTS_TO_RESEARCH}
+### Monitoring and Observability
+**Priority:** High  
+**Scope:** Practical implementation of monitoring systems, alerting strategies, and observability practices
 
 **Specific Questions:**
-- {SPECIFIC_QUESTION_1}
-- {SPECIFIC_QUESTION_2}
+- How to set up effective alerting that minimizes false positives?
+- What's the difference between monitoring, observability, and telemetry?
+- How to implement distributed tracing in microservices?
 
 **Research Plan:**
-1. {RESEARCH_STEP_1}
-2. {RESEARCH_STEP_2}
+1. Set up local Prometheus + Grafana environment
+2. Practice creating dashboards and alerts
+3. Explore distributed tracing with Jaeger
+4. Study real-world monitoring architectures
 
 **Resources to Explore:**
-- [ ] {RESOURCE_TYPE}: {RESOURCE_NAME}
-- [ ] {RESOURCE_TYPE}: {RESOURCE_NAME}
+- [ ] Hands-on: Prometheus tutorial
+- [ ] Article: "Monitoring vs Observability" by Charity Majors
+- [ ] Video: "Observability Engineering" talks from conferences
 
-### {RESEARCH_AREA_2}
-**Priority:** {High/Medium/Low}  
-**Scope:** {WHAT_ASPECTS_TO_RESEARCH}
+### Incident Response and Management
+**Priority:** High  
+**Scope:** Understanding incident lifecycle, response procedures, and post-incident analysis
+
+**Specific Questions:**
+- What makes an effective incident commander?
+- How to write actionable runbooks?
+- What should be included in a good postmortem?
+
+**Research Plan:**
+1. Study incident response frameworks (PagerDuty, Google SRE practices)
+2. Analyze real postmortem examples
+3. Practice incident simulation exercises
 
 ## 💭 Hypothesis & Assumptions
 
-### {HYPOTHESIS_TITLE}
-**Hypothesis:** {YOUR_HYPOTHESIS}  
-**Reasoning:** {WHY_YOU_THINK_THIS}  
-**Test Plan:** {HOW_TO_VALIDATE}  
-**Status:** {Untested/Testing/Confirmed/Refuted}
+### SRE Skills Transfer to Cloud Engineering
+**Hypothesis:** SRE skills and practices are highly transferable to cloud engineering and platform engineering roles  
+**Reasoning:** Both focus on reliability, automation, and treating infrastructure as code  
+**Test Plan:** Research job descriptions and skill requirements for these roles  
+**Status:** Untested
+
+### Monitoring Complexity
+**Hypothesis:** Setting up effective monitoring is more complex than it initially appears  
+**Reasoning:** Need to balance signal vs noise, avoid alert fatigue, and ensure meaningful metrics  
+**Test Plan:** Hands-on implementation of monitoring stack  
+**Status:** Untested
 
 ## 🎯 Knowledge Gaps
 
 ### Technical Gaps
-- **{GAP_AREA}:** {DESCRIPTION_OF_WHAT_YOU_DON_T_KNOW}
-  - **Impact:** {HOW_THIS_AFFECTS_YOUR_LEARNING}
-  - **Plan:** {HOW_TO_ADDRESS_THIS_GAP}
+- **Container Orchestration:** Limited hands-on experience with Kubernetes in production scenarios
+  - **Impact:** Many SRE roles require Kubernetes expertise
+  - **Plan:** Set up local K8s cluster and practice common operations
+
+- **Infrastructure as Code:** Basic understanding but no practical experience with Terraform/Ansible
+  - **Impact:** Modern SRE practices heavily rely on IaC
+  - **Plan:** Complete Terraform tutorials and build sample infrastructure
 
 ### Conceptual Gaps
-- **{GAP_AREA}:** {DESCRIPTION}
-  - **Impact:** {IMPACT}
-  - **Plan:** {PLAN}
+- **Capacity Planning:** Don't understand how to predict and plan for system growth
+  - **Impact:** Critical for preventing outages and optimizing costs
+  - **Plan:** Study capacity planning methodologies and tools
+
+- **Security in SRE:** Limited understanding of security considerations in reliability engineering
+  - **Impact:** Security and reliability are increasingly interconnected
+  - **Plan:** Research secure SRE practices and compliance requirements
 
 ## 🔗 Cross-References
 
 ### Related to Other Projects
-- **{PROJECT_NAME}:** {HOW_THIS_QUESTION_RELATES}
-- **{PROJECT_NAME}:** {HOW_THIS_QUESTION_RELATES}
+- **Future Kubernetes Project:** Many questions about K8s monitoring and reliability
+- **Future Infrastructure Project:** IaC questions will be relevant for automation focus
 
 ### Dependencies
-- **Question A** depends on resolving **Question B**
-- **Research Area X** requires understanding **Concept Y**
+- **Monitoring setup** depends on resolving **tool selection questions**
+- **Incident response understanding** requires **hands-on monitoring experience**
 
 ## 📅 Research Schedule
 
-### This Week
-- [ ] {RESEARCH_TASK_1}
-- [ ] {RESEARCH_TASK_2}
+### This Week (Jan 7-13, 2025)
+- [ ] Complete Prometheus getting started tutorial
+- [ ] Research SLO implementation examples
+- [ ] Read 3 chapters from Google SRE Book
 
-### Next Week
-- [ ] {RESEARCH_TASK_3}
-- [ ] {RESEARCH_TASK_4}
+### Next Week (Jan 14-20, 2025)
+- [ ] Set up local monitoring lab environment
+- [ ] Study incident response frameworks
+- [ ] Research SRE vs DevOps role differences
 
-### This Month
-- [ ] {LONGER_TERM_RESEARCH_GOAL}
+### This Month (January 2025)
+- [ ] Complete foundational SRE concepts research
+- [ ] Hands-on practice with monitoring tools
+- [ ] Begin planning next learning project based on identified gaps

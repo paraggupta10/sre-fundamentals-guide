@@ -1,32 +1,35 @@
-# sre-fundamentals-guide
+# SRE Fundamentals Guide
 
 ## 🎯 Project Goal
-
+Build a comprehensive understanding of Site Reliability Engineering fundamentals including monitoring, incident response, SLOs/SLIs, and reliability practices. This project aims to create a practical knowledge base that bridges theory with hands-on implementation.
 
 ## 📊 Current Status
-**Status:** Planning | **Progress:** 5% | **Last Updated:** 2025-09-07
+**Status:** Initial Setup Complete | **Progress:** 10% | **Last Updated:** 2025-01-07
 
-
+Project structure has been established and ready for content development. Initial research phase beginning with focus on foundational SRE concepts and best practices.
 
 ## 🚀 Next Steps
-- [ ] {NEXT_ACTION_ITEM_1}
-- [ ] {NEXT_ACTION_ITEM_2}
-- [ ] {NEXT_ACTION_ITEM_3}
+- [ ] Research and collect foundational SRE resources (Google SRE books, key articles)
+- [ ] Create structured notes on SLO/SLI concepts and best practices
+- [ ] Set up hands-on lab environment for practicing monitoring tools
+- [ ] Document incident response procedures and runbooks
 
 ## 📚 Resources Collected
 
 ### 📖 Articles & Blogs
-- [{RESOURCE_TITLE}]({RESOURCE_URL}) - {SHORT_DESCRIPTION}
-- [{RESOURCE_TITLE}]({RESOURCE_URL}) - {SHORT_DESCRIPTION}
+- [Google SRE Book - Chapter 1: Introduction](https://sre.google/sre-book/introduction/) - Foundational introduction to SRE principles
+- [The Four Golden Signals](https://sre.google/sre-book/monitoring-distributed-systems/) - Key metrics for monitoring distributed systems
 
 ### 📺 Videos & Courses
-- [{RESOURCE_TITLE}]({RESOURCE_URL}) - {SHORT_DESCRIPTION}
+- [Site Reliability Engineering at Google](https://www.youtube.com/watch?v=uTEL8Ff1Zvk) - Overview of SRE practices at Google
 
 ### 🛠️ Tools & Software
-- [{TOOL_NAME}]({TOOL_URL}) - {PURPOSE_AND_DESCRIPTION}
+- [Prometheus](https://prometheus.io/) - Open-source monitoring and alerting toolkit
+- [Grafana](https://grafana.com/) - Observability and data visualization platform
 
 ### 📚 Books & Documentation
-- [{BOOK_TITLE}]({BOOK_URL}) - {RELEVANCE_DESCRIPTION}
+- [Site Reliability Engineering (Google)](https://sre.google/sre-book/) - The definitive guide to SRE practices
+- [The Site Reliability Workbook](https://sre.google/workbook/) - Practical implementation of SRE principles
 
 ## 📝 Learning Summaries
 Key concepts and takeaways are documented in [`notes/summaries.md`](./notes/summaries.md).
@@ -57,10 +60,10 @@ sre-fundamentals-guide/
 ```
 
 ## 🤝 Contributing
-{IF_APPLICABLE_ADD_CONTRIBUTION_GUIDELINES}
+This is a personal learning project. However, suggestions for resources, corrections, or improvements are welcome through issues or discussions.
 
 ## 📄 License
-{LICENSE_INFORMATION_IF_APPLICABLE}
+This project is for educational purposes. All external resources are properly attributed to their original authors.
 
 ---
 **Note:** This project follows the structured learning approach. Context and progress tracking information is maintained locally in `.context.json` and is not committed to version control.
