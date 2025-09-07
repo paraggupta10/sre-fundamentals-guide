@@ -1,123 +1,125 @@
-# 🚀 SRE Fundamentals Guide
+# SRE Fundamentals Guide
 
-A comprehensive learning journey through Site Reliability Engineering (SRE) fundamentals, focusing on practical knowledge and real-world applications.
+A comprehensive guide for Site Reliability Engineering and DevOps interview preparation. This repository contains structured learning materials covering essential topics for SRE/DevOps roles.
 
-## 📋 Overview
+## 📚 Topics Covered
 
-This repository documents my structured approach to mastering SRE concepts, from foundational system knowledge to advanced reliability practices. Each topic is thoroughly researched, documented, and connected to practical SRE scenarios.
+### 🐧 Linux
+- **Boot Process** - Understanding the 6-stage Linux startup sequence
+- **System Administration** - Essential commands and troubleshooting
+- **Process Management** - Understanding processes, signals, and system resources
+- **File Systems** - File permissions, disk management, and storage concepts
+- **Performance Monitoring** - Using top, htop, iostat, and other monitoring tools
 
-## 🎯 Learning Objectives
+### 🌐 Networking
+- **TCP/IP Fundamentals** - Protocol stack and network communication
+- **DNS** - Domain name resolution and troubleshooting
+- **Load Balancing** - Distribution strategies and implementation
+- **Network Troubleshooting** - Common tools and methodologies
+- **Security** - Firewalls, VPNs, and network security concepts
 
-- **Understand SRE Principles**: Core concepts, error budgets, and reliability practices
-- **Master Monitoring & Observability**: Four Golden Signals, SLOs/SLIs, alerting strategies
-- **System Fundamentals**: Linux internals, boot processes, and infrastructure understanding
-- **Incident Response**: Procedures, postmortems, and continuous improvement
-- **Automation & Tooling**: Infrastructure as Code, monitoring setup, and operational efficiency
+### ☸️ Kubernetes
+- **Architecture** - Control plane, nodes, and core components
+- **Workloads** - Pods, Deployments, Services, and Ingress
+- **Storage** - Persistent volumes and storage classes
+- **Networking** - Service mesh, CNI, and network policies
+- **Troubleshooting** - Common issues and debugging techniques
 
-## 📊 Current Progress
+### 🐍 Python
+- **Automation Scripts** - Common SRE automation patterns
+- **API Integration** - Working with REST APIs and webhooks
+- **Data Processing** - Log analysis and metrics processing
+- **Testing** - Unit tests and integration testing for infrastructure code
+- **Best Practices** - Code organization and error handling
 
-![Progress](https://img.shields.io/badge/Progress-20%25-yellow)
-![Status](https://img.shields.io/badge/Status-Active%20Learning-green)
-![Last%20Updated](https://img.shields.io/badge/Last%20Updated-2025--09--07-blue)
+### 📊 Monitoring & Observability
+- **Metrics** - The Four Golden Signals and key performance indicators
+- **Logging** - Centralized logging strategies and analysis
+- **Tracing** - Distributed tracing concepts and implementation
+- **Alerting** - Effective alerting strategies and alert fatigue prevention
+- **SLOs/SLIs** - Service level objectives and reliability measurement
 
-**Current Focus**: Linux Boot Process and System Fundamentals  
-**Time Invested**: 3.5+ hours of focused learning  
-**Completion Target**: March 2025
+### 🔧 Infrastructure as Code
+- **Terraform** - Infrastructure provisioning and management
+- **Ansible** - Configuration management and automation
+- **CI/CD** - Pipeline design and deployment strategies
+- **Version Control** - Git workflows for infrastructure teams
+- **Testing** - Infrastructure testing and validation
 
-## 📚 Learning Topics
+### 🚨 Incident Response
+- **Incident Management** - Response procedures and escalation
+- **Postmortems** - Blameless culture and continuous improvement
+- **On-Call** - Best practices for on-call rotations
+- **Communication** - Effective incident communication strategies
+- **Recovery** - Disaster recovery and business continuity
 
-### ✅ Completed
-- [x] **SRE Principles & Philosophy** - Understanding the core concepts and approach
-- [x] **SLOs, SLIs & Error Budgets** - Quantitative reliability management
-- [x] **Four Golden Signals** - Essential monitoring metrics (Latency, Traffic, Errors, Saturation)
-- [x] **Linux Boot Process** - 6-stage system startup sequence and SRE implications
-
-### 🔄 In Progress
-- [ ] **Monitoring & Alerting Setup** - Hands-on Prometheus and Grafana implementation
-- [ ] **Incident Response Procedures** - Structured approach to handling outages
-- [ ] **Capacity Planning** - Predicting and managing system growth
-
-### 📋 Planned
-- [ ] **Infrastructure as Code** - Terraform and Ansible for SRE
-- [ ] **Container Orchestration** - Kubernetes reliability patterns
-- [ ] **Security in SRE** - Secure reliability practices
-- [ ] **Real-world Case Studies** - Learning from industry examples
-
-## 🏗️ Repository Structure
+## 🗂️ Repository Structure
 
 ```
 sre-fundamentals-guide/
-├── docs/                    # Project documentation
-│   ├── README.md           # This file
-│   └── CHANGELOG.md        # Learning milestones
-├── notes/                   # Learning documentation
-│   ├── summaries.md        # Key concepts and takeaways
-│   ├── questions.md        # Research questions and answers
-│   └── experiments.md      # Hands-on practice logs
-├── resources/              # Curated learning materials
-│   ├── links.md           # Articles, blogs, and references
-│   ├── books.md           # Recommended reading
-│   └── tools.md           # SRE tools and software
-└── src/                    # Code examples and configurations
+├── linux/
+│   ├── boot-process/
+│   ├── system-administration/
+│   ├── process-management/
+│   └── performance-monitoring/
+├── networking/
+│   ├── tcp-ip-fundamentals/
+│   ├── dns/
+│   ├── load-balancing/
+│   └── troubleshooting/
+├── kubernetes/
+│   ├── architecture/
+│   ├── workloads/
+│   ├── storage/
+│   └── networking/
+├── python/
+│   ├── automation-scripts/
+│   ├── api-integration/
+│   └── best-practices/
+├── monitoring/
+│   ├── metrics/
+│   ├── logging/
+│   ├── tracing/
+│   └── alerting/
+├── infrastructure-as-code/
+│   ├── terraform/
+│   ├── ansible/
+│   └── ci-cd/
+└── incident-response/
+    ├── procedures/
+    ├── postmortems/
+    └── communication/
 ```
 
-## 📖 Key Learning Resources
+## 🎯 How to Use This Guide
 
-### 📚 Essential Reading
-- [Google SRE Book](https://sre.google/sre-book/) - The definitive SRE guide
-- [Site Reliability Workbook](https://sre.google/workbook/) - Practical implementation
-- [Linux Boot Process](https://www.thegeekstuff.com/2011/02/linux-boot-process/) - System fundamentals
+1. **Browse by Topic** - Navigate to specific areas you want to study
+2. **Follow the Structure** - Each section builds upon previous concepts
+3. **Practice Examples** - Try the provided code examples and exercises
+4. **Reference Material** - Use as a quick reference during interviews or work
 
-### 🛠️ Tools & Technologies
-- **Monitoring**: Prometheus, Grafana, Jaeger
-- **Infrastructure**: Kubernetes, Docker, Terraform
-- **Observability**: Distributed tracing, metrics, logging
-- **Automation**: Ansible, CI/CD pipelines
+## 📖 Study Approach
 
-## 🔍 Recent Learning Highlights
+- **Fundamentals First** - Start with Linux and networking basics
+- **Hands-On Practice** - Set up lab environments to test concepts
+- **Real-World Scenarios** - Focus on practical problem-solving
+- **Interview Preparation** - Review common questions and scenarios
 
-### Linux Boot Process (2025-09-07)
-Completed comprehensive study of the 6-stage Linux boot sequence:
-- **BIOS** → **MBR** → **GRUB** → **Kernel** → **Init** → **Runlevel Programs**
-- **SRE Relevance**: Critical for system troubleshooting, performance optimization, and recovery procedures
-- **Key Insight**: Understanding boot process helps with both bare-metal and containerized environment issues
+## 🤝 Contributing
 
-## 🎯 Learning Methodology
+Contributions are welcome! Please feel free to:
+- Add new topics or expand existing ones
+- Improve explanations and examples
+- Fix errors or outdated information
+- Suggest better organization or structure
 
-1. **Research & Documentation** - Thorough study of concepts with source attribution
-2. **Practical Application** - Hands-on labs and real-world scenarios  
-3. **Knowledge Synthesis** - Connecting concepts across different SRE domains
-4. **Continuous Review** - Regular updates and knowledge reinforcement
-5. **Community Learning** - Engaging with SRE communities and best practices
+## 📚 Additional Resources
 
-## 📈 Learning Metrics
-
-- **Study Sessions**: Regular 1-2 hour focused learning blocks
-- **Progress Tracking**: Quantitative completion percentages
-- **Time Investment**: Detailed logging of learning hours
-- **Knowledge Gaps**: Systematic identification and resolution
-- **Practical Application**: Hands-on experiments and implementations
-
-## 🤝 Contributing & Feedback
-
-While this is a personal learning repository, I welcome:
-- **Resource Suggestions**: Additional high-quality SRE materials
-- **Discussion**: Insights and experiences from fellow SRE practitioners  
-- **Corrections**: Improvements to technical accuracy
-- **Learning Tips**: Effective SRE learning strategies
-
-## 📄 License & Attribution
-
-This project is for educational purposes. All external resources are properly attributed to their original authors and sources.
-
-## 🔗 Connect
-
-- **GitHub**: [@paraggupta10](https://github.com/paraggupta10)
-- **Learning Focus**: Site Reliability Engineering, DevOps, Cloud Infrastructure
-- **Career Goal**: Senior SRE/Platform Engineering roles
+- [Google SRE Book](https://sre.google/sre-book/)
+- [Site Reliability Workbook](https://sre.google/workbook/)
+- [Kubernetes Documentation](https://kubernetes.io/docs/)
+- [Linux Documentation Project](https://tldp.org/)
 
 ---
 
-**Note**: This repository follows a structured learning approach with local context tracking for AI-assisted learning while maintaining clean, professional public documentation.
-
-*Last Updated: September 7, 2025*
+*This guide is maintained as a community resource for SRE and DevOps interview preparation.*
