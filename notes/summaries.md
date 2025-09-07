@@ -52,12 +52,69 @@ The four golden signals of monitoring are latency, traffic, errors, and saturati
 
 ---
 
+### Linux Boot Process (6 Stages)
+**Source:** [The Geek Stuff - Linux Boot Process](https://www.thegeekstuff.com/2011/02/linux-boot-process/)  
+**Date Learned:** 2025-09-07
+
+Understanding the Linux boot process is crucial for SRE work as it helps troubleshoot system startup issues, optimize boot times, and understand system initialization.
+
+**The 6 Stages:**
+
+1. **BIOS (Basic Input/Output System)**
+   - Performs system integrity checks
+   - Searches for boot loader in floppy, CD-ROM, or hard drive
+   - Loads and executes MBR boot loader
+   - Can change boot sequence with F12/F2 during startup
+
+2. **MBR (Master Boot Record)**
+   - Located in 1st sector of bootable disk (/dev/sda, /dev/hda)
+   - Size: <512 bytes with 3 components:
+     - Primary boot loader info (446 bytes)
+     - Partition table info (64 bytes)
+     - MBR validation check (2 bytes)
+   - Contains GRUB (or LILO) information
+
+3. **GRUB (Grand Unified Bootloader)**
+   - Allows selection of multiple kernel images
+   - Displays splash screen with timeout
+   - Configuration: `/boot/grub/grub.conf` (linked from `/etc/grub.conf`)
+   - Understands filesystems (unlike older LILO)
+   - Loads kernel and initrd images
+
+4. **Kernel**
+   - Mounts root filesystem as specified in grub.conf
+   - Executes `/sbin/init` (PID 1)
+   - Uses initrd (Initial RAM Disk) as temporary root filesystem
+   - initrd contains necessary drivers for hardware access
+
+5. **Init**
+   - Reads `/etc/inittab` to determine run level
+   - Run levels: 0(halt), 1(single user), 2(multiuser no NFS), 3(full multiuser), 4(unused), 5(X11), 6(reboot)
+   - Loads appropriate programs based on default run level
+
+6. **Runlevel Programs**
+   - Services start based on run level from `/etc/rc.d/rc*.d/`
+   - Programs starting with 'S' = startup, 'K' = kill/shutdown
+   - Numbers indicate sequence (S12syslog starts before S80sendmail)
+
+**Key Points:**
+- Each stage hands control to the next in sequence
+- Understanding this helps with boot troubleshooting
+- Critical for system recovery and optimization
+- Foundation knowledge for containerized environments
+
+**Related Concepts:** System Administration, Troubleshooting, Container Initialization
+
+---
+
 ## 🔗 Concept Relationships
 
 ```
 SRE Principles → SLOs/SLIs → Error Budgets → Monitoring (Four Golden Signals)
      ↓
 Incident Response → Postmortems → Continuous Improvement
+     ↓
+System Fundamentals (Linux Boot Process) → Infrastructure Understanding → Troubleshooting
 ```
 
 ## 🎯 Learning Objectives Progress
@@ -65,6 +122,7 @@ Incident Response → Postmortems → Continuous Improvement
 - [x] Understand basic SRE principles and philosophy
 - [x] Learn about SLOs, SLIs, and error budgets
 - [x] Identify the four golden signals of monitoring
+- [x] Understand Linux boot process and system fundamentals
 - [ ] Deep dive into incident response procedures
 - [ ] Learn about capacity planning and performance optimization
 - [ ] Understand automation and tooling in SRE

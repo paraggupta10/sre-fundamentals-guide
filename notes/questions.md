@@ -38,6 +38,11 @@
    - **Context:** Understanding incident response effectiveness
    - **Research Status:** Not Started
 
+6. **How does understanding Linux boot process help in containerized environments?**
+   - **Question:** How do container initialization processes relate to traditional Linux boot sequence?
+   - **Context:** Modern infrastructure relies heavily on containers, but understanding underlying OS boot process is still crucial
+   - **Research Status:** Not Started
+
 ## ✅ Resolved Questions
 
 ### What are the core principles of Site Reliability Engineering?
@@ -60,6 +65,29 @@ SRE applies software engineering principles to operations problems. Core princip
 - SRE is fundamentally about treating operations as a software problem
 - Error budgets provide a quantitative framework for balancing reliability and velocity
 - Automation is preferred over manual processes wherever possible
+
+---
+
+### What are the stages of Linux boot process and why is this important for SRE?
+**Resolved Date:** 2025-09-07  
+**Original Question:** How does a Linux system start up and what should SREs know about this process?
+
+**Answer/Solution:**
+The Linux boot process consists of 6 main stages: BIOS → MBR → GRUB → Kernel → Init → Runlevel Programs. Understanding this is crucial for SREs because:
+
+1. **Troubleshooting**: When systems fail to boot, knowing each stage helps isolate the problem
+2. **Performance**: Understanding boot sequence helps optimize startup times
+3. **Recovery**: Knowledge of boot process is essential for system recovery procedures
+4. **Monitoring**: Can set up monitoring for boot-related metrics and failures
+5. **Automation**: Understanding init systems helps with service management and automation
+
+**Sources:**
+- [The Geek Stuff - Linux Boot Process](https://www.thegeekstuff.com/2011/02/linux-boot-process/)
+
+**Key Insights:**
+- Each stage has specific failure modes that require different troubleshooting approaches
+- Modern systems may use systemd instead of traditional init, but the overall concept remains
+- Container environments abstract this but understanding the underlying process is still valuable
 
 ---
 

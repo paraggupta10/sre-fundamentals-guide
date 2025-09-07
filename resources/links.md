@@ -34,6 +34,10 @@
 
 ## 🏗️ Infrastructure & Automation
 
+### System Fundamentals
+- [Linux Boot Process - 6 Stages](https://www.thegeekstuff.com/2011/02/linux-boot-process/) - Essential understanding of system startup sequence
+- [Linux System Administration](https://www.thegeekstuff.com/) - Comprehensive Linux tutorials and guides
+
 ### Infrastructure as Code
 - [Terraform Best Practices](https://www.terraform.io/docs/cloud/guides/recommended-practices/index.html)
 - [Ansible Documentation](https://docs.ansible.com/)
